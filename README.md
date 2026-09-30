@@ -1,4 +1,4 @@
-# Maison Rouge Salon Website
+# Javed Habib Salon Website
 
 A long-form, mobile-first high-end salon landing page concept for Bongaigaon, Assam.
 
