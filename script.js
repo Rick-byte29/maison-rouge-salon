@@ -207,7 +207,7 @@
     restartAuto();
   };
 
-  const initCarousels = () => $('[data-carousel]').forEach(setupCarousel);
+  const initCarousels = () => Array.from(document.querySelectorAll('[data-carousel]')).forEach(setupCarousel);
 
   // Gallery filtering.
   $$('.gallery-filters button').forEach(btn => {
