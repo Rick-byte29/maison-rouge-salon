@@ -1,4 +1,10 @@
 (() => {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  const forceTop = () => window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  forceTop();
+  window.addEventListener('pageshow', forceTop);
+
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => [...root.querySelectorAll(s)];
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -9,9 +15,11 @@
   window.addEventListener('load', () => {
     const wait = Math.max(0, 2000 - performance.now());
     setTimeout(() => {
+      forceTop();
       loader?.classList.add('is-hidden');
       document.body.classList.remove('locked');
       revealHero();
+      requestAnimationFrame(forceTop);
     }, wait);
   });
 
@@ -19,6 +27,15 @@
   const toggle = $('#menuToggle');
   const mobileNav = $('#mobileNav');
   const progress = $('#scrollProgress');
+  const brandHome = $('#brandHome');
+
+  brandHome?.addEventListener('click', e => {
+    e.preventDefault();
+    mobileNav?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    window.scrollTo({ top: 0, left: 0, behavior: reduced ? 'auto' : 'smooth' });
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  });
 
   const syncScrollUI = () => {
     header?.classList.toggle('scrolled', window.scrollY > 30);
