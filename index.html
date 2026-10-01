@@ -14,7 +14,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%237d0b16'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia' font-size='22' fill='white'%3EJH%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://images.unsplash.com" />\n  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1759134198561-e2041049419c?auto=format&fit=crop&q=82&w=1800" fetchpriority="high" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
   <script type="application/ld+json">
@@ -123,12 +123,12 @@
       <div class="section-kicker reveal"><span>02</span><p>SERVICE MENU</p></div>
       <div class="services-head reveal"><h2>A considered menu<br/>for <em>every texture.</em></h2><p>Tap any service for duration, maintenance and what to expect. Demo pricing is illustrative.</p></div>
       <div class="service-list">
-        <button class="service-row reveal" type="button" data-service="cut"><span class="service-num">01</span><span class="service-main"><h3>Signature Cut & Finish</h3><p>Consultation, cleanse, precision cut and polished finish.</p></span><strong>From ₹900</strong><span class="service-arrow">↗</span></button>
-        <button class="service-row reveal" type="button" data-service="colour"><span class="service-num">02</span><span class="service-main"><h3>Colour Atelier</h3><p>Global colour, gloss, balayage and dimensional work.</p></span><strong>From ₹2,500</strong><span class="service-arrow">↗</span></button>
-        <button class="service-row reveal" type="button" data-service="smooth"><span class="service-num">03</span><span class="service-main"><h3>Keratin & Smooth</h3><p>Frizz refinement and smoothness selected for your hair.</p></span><strong>From ₹4,500</strong><span class="service-arrow">↗</span></button>
-        <button class="service-row reveal" type="button" data-service="spa"><span class="service-num">04</span><span class="service-main"><h3>Hair Spa & Repair</h3><p>Hydration, bond repair and scalp-led restorative care.</p></span><strong>From ₹1,200</strong><span class="service-arrow">↗</span></button>
-        <button class="service-row reveal" type="button" data-service="bridal"><span class="service-num">05</span><span class="service-main"><h3>Bridal & Occasion</h3><p>Editorial updos, soft styling and event-ready finishing.</p></span><strong>Consultation</strong><span class="service-arrow">↗</span></button>
-        <button class="service-row reveal" type="button" data-service="men"><span class="service-num">06</span><span class="service-main"><h3>Men's Grooming</h3><p>Cut, styling, beard detailing and finish.</p></span><strong>From ₹650</strong><span class="service-arrow">↗</span></button>
+        <button class="service-row reveal" type="button" data-service="cut"><span class="service-num">01</span><div class="service-main"><h3>Signature Cut & Finish</h3><p>Consultation, cleanse, precision cut and polished finish.</p></div><strong>From ₹900</strong><span class="service-arrow">↗</span></button>
+        <button class="service-row reveal" type="button" data-service="colour"><span class="service-num">02</span><div class="service-main"><h3>Colour Atelier</h3><p>Global colour, gloss, balayage and dimensional work.</p></div><strong>From ₹2,500</strong><span class="service-arrow">↗</span></button>
+        <button class="service-row reveal" type="button" data-service="smooth"><span class="service-num">03</span><div class="service-main"><h3>Keratin & Smooth</h3><p>Frizz refinement and smoothness selected for your hair.</p></div><strong>From ₹4,500</strong><span class="service-arrow">↗</span></button>
+        <button class="service-row reveal" type="button" data-service="spa"><span class="service-num">04</span><div class="service-main"><h3>Hair Spa & Repair</h3><p>Hydration, bond repair and scalp-led restorative care.</p></div><strong>From ₹1,200</strong><span class="service-arrow">↗</span></button>
+        <button class="service-row reveal" type="button" data-service="bridal"><span class="service-num">05</span><div class="service-main"><h3>Bridal & Occasion</h3><p>Editorial updos, soft styling and event-ready finishing.</p></div><strong>Consultation</strong><span class="service-arrow">↗</span></button>
+        <button class="service-row reveal" type="button" data-service="men"><span class="service-num">06</span><div class="service-main"><h3>Men's Grooming</h3><p>Cut, styling, beard detailing and finish.</p></div><strong>From ₹650</strong><span class="service-arrow">↗</span></button>
       </div>
       <div class="service-cta reveal"><p>Not sure what to book?</p><button class="text-button" type="button" data-book>Start with a consultation →</button></div>
     </section>
@@ -279,6 +279,14 @@
 
   <div class="mobile-bookbar">
     <a href="tel:+919101035255">Call</a><button type="button" data-book>Book appointment</button>
+  </div>
+
+  <div class="modal-backdrop gallery-modal" id="galleryModal" aria-hidden="true">
+    <div class="gallery-modal-card" role="dialog" aria-modal="true" aria-label="Gallery image">
+      <button class="modal-close gallery-close" type="button" data-close-gallery aria-label="Close">×</button>
+      <img id="galleryModalImg" src="" alt="" />
+      <div class="gallery-modal-caption"><span>JAVED HABIB · BONGAIGAON DEMO</span><p id="galleryModalCaption"></p></div>
+    </div>
   </div>
 
   <div class="modal-backdrop" id="serviceModal" aria-hidden="true">
