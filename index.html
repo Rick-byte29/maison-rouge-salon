@@ -14,7 +14,8 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%237d0b16'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia' font-size='22' fill='white'%3EJH%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://images.unsplash.com" />\n  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1759134198561-e2041049419c?auto=format&fit=crop&q=82&w=1800" fetchpriority="high" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1759134198561-e2041049419c?auto=format&fit=crop&q=82&w=1800" fetchpriority="high" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
   <script type="application/ld+json">
@@ -32,8 +33,6 @@
   </script>
 </head>
 <body>
-  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <div class="loader" id="loader" aria-label="Loading Javed Habib">
@@ -46,14 +45,14 @@
   </div>
 
   <header class="site-header" id="top">
-    <a class="brand magnetic" href="#top" aria-label="Javed Habib home">
+    <a class="brand" href="#top" aria-label="Javed Habib home">
       <span class="brand-monogram">JH</span>
       <span class="brand-copy"><strong>Javed Habib</strong><small>Salon · Bongaigaon</small></span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#experience">Experience</a><a href="#services">Services</a><a href="#artists">Artists</a><a href="#transformations">Results</a><a href="#contact">Visit</a>
     </nav>
-    <button class="header-cta magnetic" type="button" data-book>Book appointment</button>
+    <button class="header-cta" type="button" data-book>Book appointment</button>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu"><span></span><span></span></button>
     <div class="mobile-nav" id="mobileNav">
       <a href="#experience">Experience</a><a href="#services">Services</a><a href="#artists">Artists</a><a href="#transformations">Results</a><a href="#contact">Visit</a>
@@ -70,7 +69,7 @@
         <h1>Hair,<br/><em>made personal.</em></h1>
         <p class="hero-copy">Precision cuts, dimensional colour, restorative care and occasion styling—built around your face, texture and everyday rhythm.</p>
         <div class="hero-actions">
-          <button class="btn btn-light magnetic" type="button" data-book>Book your chair <span>↗</span></button>
+          <button class="btn btn-light" type="button" data-book>Book your chair <span>↗</span></button>
           <a class="text-link light" href="#transformations">See transformations <span>↓</span></a>
         </div>
       </div>
@@ -159,7 +158,7 @@
         <h2>Care is not an<br/>afterthought.</h2>
         <p>Every service begins with a scalp and hair assessment. Cleansing, treatment and finishing are selected according to condition, texture and desired movement.</p>
         <div class="feature-points"><div><strong>01</strong><span>Deep cleanse</span></div><div><strong>02</strong><span>Targeted repair</span></div><div><strong>03</strong><span>Heat protection</span></div></div>
-        <button class="btn btn-dark magnetic" type="button" data-book data-service-preselect="Hair Spa & Repair">Ask for a consultation <span>↗</span></button>
+        <button class="btn btn-dark" type="button" data-book data-service-preselect="Hair Spa & Repair">Ask for a consultation <span>↗</span></button>
       </div>
     </section>
 
@@ -227,7 +226,7 @@
 
     <section class="statement">
       <div class="statement-media parallax" data-speed="0.08"></div><div class="statement-overlay"></div><div class="film-grain" aria-hidden="true"></div>
-      <div class="statement-copy reveal"><span>YOUR NEXT LOOK</span><h2>Subtle or dramatic.<br/>Always <em>you.</em></h2><button type="button" class="btn btn-light magnetic" data-book>Start your booking <span>↗</span></button></div>
+      <div class="statement-copy reveal"><span>YOUR NEXT LOOK</span><h2>Subtle or dramatic.<br/>Always <em>you.</em></h2><button type="button" class="btn btn-light" data-book>Start your booking <span>↗</span></button></div>
     </section>
 
     <section class="section faq" id="faq">
@@ -256,7 +255,7 @@
     </section>
 
     <section class="booking-band">
-      <p>Ready when you are.</p><h2>Make space for<br/><em>great hair.</em></h2><button class="btn btn-light magnetic" type="button" data-book>Book an appointment <span>↗</span></button>
+      <p>Ready when you are.</p><h2>Make space for<br/><em>great hair.</em></h2><button class="btn btn-light" type="button" data-book>Book an appointment <span>↗</span></button>
     </section>
   </main>
 
