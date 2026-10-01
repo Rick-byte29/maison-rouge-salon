@@ -159,6 +159,32 @@
     });
   });
 
+  // Gallery lightbox.
+  const galleryModal = $('#galleryModal');
+  const closeGallery = () => {
+    galleryModal?.classList.remove('open');
+    galleryModal?.setAttribute('aria-hidden', 'true');
+    if (!serviceModal?.classList.contains('open') && !bookingModal?.classList.contains('open')) document.body.classList.remove('locked');
+  };
+  $('.gallery-item').forEach(item => {
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    const open = () => {
+      const img = $('img', item);
+      if (!img || !galleryModal) return;
+      $('#galleryModalImg').src = img.src;
+      $('#galleryModalImg').alt = img.alt;
+      $('#galleryModalCaption').textContent = $('figcaption', item)?.textContent || 'Salon work';
+      galleryModal.classList.add('open');
+      galleryModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('locked');
+    };
+    item.addEventListener('click', open);
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  });
+  $('[data-close-gallery]')?.addEventListener('click', closeGallery);
+  galleryModal?.addEventListener('click', e => { if (e.target === galleryModal) closeGallery(); });
+
   // Concierge.
   const concierge = $('#concierge');
   const conciergeToggle = $('#conciergeToggle');
@@ -352,7 +378,8 @@
   // Escape closes active overlays.
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
-    if (bookingModal?.classList.contains('open')) closeBooking();
+    if (galleryModal?.classList.contains('open')) closeGallery();
+    else if (bookingModal?.classList.contains('open')) closeBooking();
     else if (serviceModal?.classList.contains('open')) closeService();
   });
 
