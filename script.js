@@ -207,7 +207,7 @@
     restartAuto();
   };
 
-  $('[data-carousel]').forEach(setupCarousel);
+  const initCarousels = () => $('[data-carousel]').forEach(setupCarousel);
 
   // Gallery filtering.
   $$('.gallery-filters button').forEach(btn => {
@@ -382,7 +382,12 @@
     bookingModal?.setAttribute('aria-hidden', 'true');
     if (!serviceModal?.classList.contains('open')) document.body.classList.remove('locked');
   };
-  $$('[data-book]').forEach(btn => btn.addEventListener('click', () => openBooking(btn)));
+  document.addEventListener('click', e => {
+    const trigger = e.target.closest?.('[data-book]');
+    if (!trigger) return;
+    e.preventDefault();
+    openBooking(trigger);
+  });
   $('[data-close-booking]')?.addEventListener('click', closeBooking);
   bookingModal?.addEventListener('click', e => { if (e.target === bookingModal) closeBooking(); });
 
@@ -444,6 +449,13 @@
     ].filter(Boolean).join('\n');
     window.open('https://wa.me/919101035255?text=' + encodeURIComponent(message), '_blank', 'noopener');
   });
+
+  // Optional visual modules initialize after booking is already bound.
+  try {
+    initCarousels();
+  } catch (error) {
+    console.warn('Carousel initialization skipped:', error);
+  }
 
   // Escape closes active overlays.
   document.addEventListener('keydown', e => {
