@@ -39,3 +39,23 @@ button{color:inherit}.scroll-progress{position:fixed;left:0;top:0;height:2px;wid
 @media(prefers-reduced-motion:reduce){.concierge-toggle .pulse{animation:none}.tilt-card,.magnetic{transform:none!important}}
 
 .gallery-item{cursor:pointer}.gallery-modal{padding:28px}.gallery-modal-card{position:relative;width:min(1180px,94vw);height:min(82vh,840px);background:#10080a;box-shadow:0 40px 120px rgba(0,0,0,.35);overflow:hidden;transform:scale(.97);transition:transform .35s var(--ease)}.gallery-modal.open .gallery-modal-card,.gallery-modal.open{transform:none}.gallery-modal-card>img{width:100%;height:100%;object-fit:cover}.gallery-close{z-index:3;color:#fff;background:rgba(15,7,9,.35);backdrop-filter:blur(8px);width:42px;height:42px;border-radius:50%}.gallery-modal-caption{position:absolute;left:24px;bottom:22px;z-index:2;background:rgba(18,8,10,.66);color:#fff;backdrop-filter:blur(12px);padding:14px 16px;max-width:420px}.gallery-modal-caption span{font-size:8px;letter-spacing:.17em;color:rgba(255,255,255,.62)}.gallery-modal-caption p{margin:5px 0 0;font:500 22px/1.15 var(--serif)}@media(max-width:680px){.gallery-modal{padding:0}.gallery-modal-card{width:100%;height:86svh;border-radius:18px 18px 0 0}.gallery-modal-caption{left:14px;right:14px;bottom:14px}.gallery-modal-caption p{font-size:18px}}
+
+
+/* ===== CTA reliability + standard cursor refinement ===== */
+html,body{cursor:auto}
+a,button,summary,[role="button"]{cursor:pointer}
+input,select,textarea{cursor:text}
+.cursor-dot,.cursor-ring{display:none!important}
+.btn,.header-cta,[data-book]{position:relative;z-index:6;min-height:48px;pointer-events:auto;transform:none!important}
+.btn{min-width:190px;padding:14px 22px}
+.header-cta{min-width:168px;height:46px;display:inline-flex;align-items:center;justify-content:center}
+.hero-actions .btn,.split-copy .btn,.visit-actions .btn,.booking-band .btn{min-width:210px}
+.campaign-copy button,.artist-meta button,.text-button,.concierge-panel a,.concierge-panel button{position:relative;z-index:3;pointer-events:auto}
+.hero-content,.statement-copy,.campaign-copy,.contact-copy,.split-copy{pointer-events:auto}
+.hero-shade,.hero-gridlines,.film-grain,.campaign-image:after{pointer-events:none}
+.mobile-bookbar a,.mobile-bookbar button{cursor:pointer;pointer-events:auto}
+@media(max-width:680px){
+  .btn,.hero-actions .btn,.split-copy .btn,.visit-actions .btn,.booking-band .btn{width:100%;min-width:0;min-height:52px}
+  .hero-actions{align-items:stretch}
+  .header-cta{min-width:0}
+}
