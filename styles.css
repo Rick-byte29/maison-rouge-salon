@@ -123,3 +123,14 @@ input,select,textarea{cursor:text}
 /* ===== Reliable page-top behavior ===== */
 .brand{position:relative;z-index:60;pointer-events:auto;cursor:pointer}
 .brand>*{pointer-events:none}
+
+
+/* ===== Before / after haircut framing ===== */
+.before-after .ba-after{object-position:center 42%}
+.before-after .ba-before img{object-position:center 38%}
+.before-after .ba-label{white-space:nowrap}
+@media(max-width:680px){
+  .before-after .ba-after{object-position:center 40%}
+  .before-after .ba-before img{object-position:center 36%}
+  .before-after .ba-label{font-size:8px;padding:8px 9px}
+}
