@@ -118,3 +118,8 @@ input,select,textarea{cursor:text}
   .split-media{min-height:420px}
 }
 @media(prefers-reduced-motion:reduce){.swipe-carousel{scroll-behavior:auto}}
+
+
+/* ===== Reliable page-top behavior ===== */
+.brand{position:relative;z-index:60;pointer-events:auto;cursor:pointer}
+.brand>*{pointer-events:none}
