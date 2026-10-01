@@ -99,9 +99,14 @@
           <div class="signature">Javed Habib <span>— Bongaigaon demo salon</span></div>
         </div>
       </div>
-      <div class="editorial-pair">
-        <figure class="image-card tall reveal tilt-card"><img src="https://images.unsplash.com/photo-1675034741473-afed58a142e8?auto=format&fit=crop&q=85&w=1400" alt="Hairstylist cutting a client's hair in a salon" loading="lazy" /><figcaption>Cut / shape / movement</figcaption></figure>
-        <figure class="image-card offset reveal delay-2 tilt-card"><img src="https://images.unsplash.com/photo-1722935408489-2bf93349c8cb?auto=format&fit=crop&q=85&w=1400" alt="Hair stylist working on a client in a salon" loading="lazy" /><figcaption>Technique / detail / finish</figcaption></figure>
+      <div class="carousel-shell experience-carousel-shell reveal">
+        <div class="carousel-topline"><span>Inside the atelier</span><div class="carousel-arrows"><button type="button" data-carousel-prev="experience" aria-label="Previous image">←</button><button type="button" data-carousel-next="experience" aria-label="Next image">→</button></div></div>
+        <div class="editorial-pair swipe-carousel" data-carousel="experience" data-autoplay="5200">
+          <figure class="image-card carousel-slide"><img src="https://images.unsplash.com/photo-1675034741473-afed58a142e8?auto=format&fit=crop&q=82&w=1000" alt="Hairstylist cutting a client's hair in a salon" loading="lazy" /><figcaption>Cut / shape / movement</figcaption></figure>
+          <figure class="image-card carousel-slide"><img src="https://images.unsplash.com/photo-1722935408489-2bf93349c8cb?auto=format&fit=crop&q=82&w=1000" alt="Hair stylist working on a client in a salon" loading="lazy" /><figcaption>Technique / detail / finish</figcaption></figure>
+          <figure class="image-card carousel-slide"><img src="https://images.unsplash.com/photo-1647462741268-e5724e5886c0?auto=format&fit=crop&q=82&w=1000" alt="Precision haircut detail in a salon" loading="lazy" /><figcaption>Precision / detail / craft</figcaption></figure>
+        </div>
+        <div class="carousel-dots" data-carousel-dots="experience" aria-label="Experience carousel position"></div>
       </div>
     </section>
 
@@ -135,7 +140,8 @@
     <section class="artists section" id="artists">
       <div class="section-kicker reveal"><span>03</span><p>MEET THE ARTISTS</p></div>
       <div class="artists-head reveal"><h2>Book the person<br/>for <em>your kind of hair.</em></h2><p>Demo profiles designed to show how real stylist expertise can be presented.</p></div>
-      <div class="artist-grid">
+      <div class="carousel-topline artist-carousel-topline reveal"><span>Swipe to meet the team</span><div class="carousel-arrows"><button type="button" data-carousel-prev="artists" aria-label="Previous stylist">←</button><button type="button" data-carousel-next="artists" aria-label="Next stylist">→</button></div></div>
+      <div class="artist-grid swipe-carousel" data-carousel="artists" data-autoplay="6200">
         <article class="artist-card reveal tilt-card">
           <div class="artist-photo"><img src="https://images.unsplash.com/photo-1675034743339-0b0747047727?auto=format&fit=crop&q=85&w=900" alt="Demo salon stylist at work" loading="lazy" /></div>
           <div class="artist-meta"><span>Creative stylist</span><h3>Arman</h3><p>Precision cuts · Texture · Men’s styling</p><button type="button" data-book data-stylist="Arman">Book with Arman ↗</button></div>
@@ -149,6 +155,7 @@
           <div class="artist-meta"><span>Senior stylist</span><h3>Riya</h3><p>Long hair · Bridal · Smoothening</p><button type="button" data-book data-stylist="Riya">Book with Riya ↗</button></div>
         </article>
       </div>
+      <div class="carousel-dots" data-carousel-dots="artists" aria-label="Artist carousel position"></div>
     </section>
 
     <section class="split-feature">
@@ -198,12 +205,14 @@
     <section class="section gallery" id="gallery">
       <div class="section-kicker reveal"><span>06</span><p>THE WORK</p></div>
       <div class="gallery-head reveal"><h2>Texture. Tone.<br/><em>Transformation.</em></h2><div class="gallery-filters" role="group" aria-label="Filter gallery"><button class="active" type="button" data-filter="all">All</button><button type="button" data-filter="cut">Cut</button><button type="button" data-filter="colour">Colour</button><button type="button" data-filter="care">Care</button></div></div>
-      <div class="gallery-grid">
+      <div class="carousel-topline gallery-carousel-topline reveal"><span>Swipe through the work</span><div class="carousel-arrows"><button type="button" data-carousel-prev="gallery" aria-label="Previous work">←</button><button type="button" data-carousel-next="gallery" aria-label="Next work">→</button></div></div>
+      <div class="gallery-grid swipe-carousel" data-carousel="gallery" data-autoplay="4800">
         <figure class="g1 reveal gallery-item" data-cat="cut"><img src="https://images.unsplash.com/photo-1647462741351-4e7a5e7317c7?auto=format&fit=crop&q=85&w=1400" alt="Stylist cutting a client's hair" loading="lazy" /><figcaption>Precision / cut</figcaption></figure>
         <figure class="g2 reveal delay-1 gallery-item" data-cat="colour"><img src="https://images.unsplash.com/photo-1675034743339-0b0747047727?auto=format&fit=crop&q=85&w=1400" alt="Hair stylist finishing a client's hairstyle" loading="lazy" /><figcaption>Gloss / colour</figcaption></figure>
         <figure class="g3 reveal delay-2 gallery-item" data-cat="cut"><img src="https://images.unsplash.com/photo-1647462741268-e5724e5886c0?auto=format&fit=crop&q=85&w=1400" alt="Close view of professional hair cutting" loading="lazy" /><figcaption>Texture / detail</figcaption></figure>
         <figure class="g4 reveal gallery-item" data-cat="care"><img src="https://images.unsplash.com/photo-1717160675643-53a7a2ebaa9f?auto=format&fit=crop&q=85&w=1400" alt="Professional salon hair wash" loading="lazy" /><figcaption>Care / ritual</figcaption></figure>
       </div>
+      <div class="carousel-dots gallery-carousel-dots" data-carousel-dots="gallery" aria-label="Gallery carousel position"></div>
     </section>
 
     <section class="numbers">
