@@ -119,15 +119,113 @@
   window.addEventListener('resize', syncBA);
   syncBA();
 
+  // Swipeable animated carousels.
+  const carouselStates = new Map();
+
+  const nearestIndex = (track, slides) => {
+    const left = track.scrollLeft;
+    let best = 0;
+    let distance = Infinity;
+    slides.forEach((slide, index) => {
+      const d = Math.abs(slide.offsetLeft - left);
+      if (d < distance) { distance = d; best = index; }
+    });
+    return best;
+  };
+
+  const setupCarousel = track => {
+    const name = track.dataset.carousel;
+    if (!name) return;
+    const slides = [...track.children];
+    if (!slides.length) return;
+
+    const dotsWrap = document.querySelector('[data-carousel-dots="' + name + '"]');
+    const prev = document.querySelector('[data-carousel-prev="' + name + '"]');
+    const next = document.querySelector('[data-carousel-next="' + name + '"]');
+    let active = 0;
+    let autoTimer = null;
+    let userInteracting = false;
+
+    if (dotsWrap) {
+      dotsWrap.innerHTML = '';
+      slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', 'Go to slide ' + (index + 1));
+        dot.addEventListener('click', () => goTo(index, true));
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    const sync = () => {
+      active = nearestIndex(track, slides);
+      if (dotsWrap) [...dotsWrap.children].forEach((dot, index) => dot.classList.toggle('active', index === active));
+    };
+
+    const goTo = (index, manual = false) => {
+      if (!slides.length) return;
+      active = (index + slides.length) % slides.length;
+      track.scrollTo({ left: slides[active].offsetLeft, behavior: reduced ? 'auto' : 'smooth' });
+      if (manual) {
+        userInteracting = true;
+        restartAuto();
+        setTimeout(() => { userInteracting = false; }, 1400);
+      }
+      requestAnimationFrame(sync);
+    };
+
+    const restartAuto = () => {
+      if (autoTimer) clearInterval(autoTimer);
+      const delay = Number(track.dataset.autoplay || 0);
+      if (!delay || reduced) return;
+      autoTimer = setInterval(() => {
+        if (!document.hidden && !userInteracting && !track.matches(':hover')) goTo(active + 1);
+      }, delay);
+    };
+
+    let scrollTimer;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(sync, 80);
+    }, { passive: true });
+    track.addEventListener('pointerdown', () => { userInteracting = true; }, { passive: true });
+    track.addEventListener('pointerup', () => {
+      setTimeout(() => { userInteracting = false; }, 900);
+      restartAuto();
+    }, { passive: true });
+    track.addEventListener('touchstart', () => { userInteracting = true; }, { passive: true });
+    track.addEventListener('touchend', () => {
+      setTimeout(() => { userInteracting = false; }, 900);
+      restartAuto();
+    }, { passive: true });
+
+    prev?.addEventListener('click', () => goTo(active - 1, true));
+    next?.addEventListener('click', () => goTo(active + 1, true));
+
+    carouselStates.set(name, { track, slides, goTo, sync });
+    sync();
+    restartAuto();
+  };
+
+  $('[data-carousel]').forEach(setupCarousel);
+
   // Gallery filtering.
   $$('.gallery-filters button').forEach(btn => {
     btn.addEventListener('click', () => {
       $$('.gallery-filters button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.dataset.filter;
-      $$('.gallery-item').forEach(item => {
-        item.classList.toggle('filtered-out', filter !== 'all' && item.dataset.cat !== filter);
+      const items = $('.gallery-item');
+      items.forEach(item => {
+        const hidden = filter !== 'all' && item.dataset.cat !== filter;
+        item.classList.toggle('filtered-out', hidden);
+        item.style.display = hidden ? 'none' : '';
       });
+      const galleryState = carouselStates.get('gallery');
+      if (galleryState) {
+        galleryState.track.scrollTo({ left: 0, behavior: reduced ? 'auto' : 'smooth' });
+        setTimeout(galleryState.sync, 220);
+      }
     });
   });
 
