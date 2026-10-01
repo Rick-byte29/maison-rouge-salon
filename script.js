@@ -89,42 +89,14 @@
   }, { passive: true });
   moveParallax();
 
-  // Fine-pointer micro interactions.
+  // Subtle card depth only; native cursor is preserved for clarity.
   if (window.matchMedia('(pointer:fine)').matches && !reduced) {
-    const dot = $('#cursorDot');
-    const ring = $('#cursorRing');
-    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
-    window.addEventListener('pointermove', e => {
-      mx = e.clientX; my = e.clientY;
-      if (dot) dot.style.transform = 'translate3d(' + (mx - 2.5) + 'px,' + (my - 2.5) + 'px,0)';
-    });
-    const follow = () => {
-      rx += (mx - rx) * .16; ry += (my - ry) * .16;
-      if (ring) ring.style.transform = 'translate3d(' + (rx - 17) + 'px,' + (ry - 17) + 'px,0)';
-      requestAnimationFrame(follow);
-    };
-    follow();
-    $$('a,button,input,select,textarea,summary,.tilt-card').forEach(el => {
-      el.addEventListener('mouseenter', () => ring?.classList.add('hover'));
-      el.addEventListener('mouseleave', () => ring?.classList.remove('hover'));
-    });
-
-    $$('.magnetic').forEach(el => {
-      el.addEventListener('pointermove', e => {
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width / 2) * .16;
-        const y = (e.clientY - r.top - r.height / 2) * .16;
-        el.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
-      });
-      el.addEventListener('pointerleave', () => el.style.transform = '');
-    });
-
     $$('.tilt-card').forEach(el => {
       el.addEventListener('pointermove', e => {
         const r = el.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - .5;
         const py = (e.clientY - r.top) / r.height - .5;
-        el.style.transform = 'perspective(1100px) rotateY(' + (px * 2.6) + 'deg) rotateX(' + (-py * 2.2) + 'deg)';
+        el.style.transform = 'perspective(1100px) rotateY(' + (px * 1.8) + 'deg) rotateX(' + (-py * 1.6) + 'deg)';
       });
       el.addEventListener('pointerleave', () => el.style.transform = '');
     });
