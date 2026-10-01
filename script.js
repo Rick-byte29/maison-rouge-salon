@@ -215,7 +215,7 @@
       $$('.gallery-filters button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.dataset.filter;
-      const items = $('.gallery-item');
+      const items = Array.from(document.querySelectorAll('.gallery-item'));
       items.forEach(item => {
         const hidden = filter !== 'all' && item.dataset.cat !== filter;
         item.classList.toggle('filtered-out', hidden);
@@ -236,7 +236,7 @@
     galleryModal?.setAttribute('aria-hidden', 'true');
     if (!serviceModal?.classList.contains('open') && !bookingModal?.classList.contains('open')) document.body.classList.remove('locked');
   };
-  $('.gallery-item').forEach(item => {
+  Array.from(document.querySelectorAll('.gallery-item')).forEach(item => {
     item.setAttribute('tabindex', '0');
     item.setAttribute('role', 'button');
     const open = () => {
